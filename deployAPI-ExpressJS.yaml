@@ -57,12 +57,12 @@ spec:
               name: knee-trainer-api-config
               key: TOPIC2
         resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
           requests:
             memory: "256Mi"
             cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
       volumes:
       - name: api-volume
         persistentVolumeClaim:
