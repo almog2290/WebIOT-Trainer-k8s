@@ -80,10 +80,11 @@ kind: Service
 metadata:
   name: knee-trainer-api-svc
 spec:
+  type: LoadBalancer
   selector:
     app: knee-trainer-api-server
     env: dev
   ports:
     - protocol: TCP
-      port: 80
+      port: 5000
       targetPort: 5000
