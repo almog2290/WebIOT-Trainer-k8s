@@ -20,9 +20,9 @@ spec:
         image: registry.moglidev.xyz/kneetrainer-app-client:dev1.1
         ports:
         - containerPort: 3000
-        volumeMounts:
-        - mountPath: /usr/src/app
-          name: knee-trainer-client-pvc
+        # volumeMounts:
+        # - mountPath: /usr/src/app
+        #   name: knee-trainer-client-pvc
         env:
         - name: REACT_APP_API_URL
           value: http://knee-trainer-api-svc
@@ -30,10 +30,10 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "2000m"
-      volumes:
-      - name: knee-trainer-client-pvc
-        persistentVolumeClaim:
-          claimName: knee-trainer-client-pvc
+      # volumes:
+      # - name: knee-trainer-client-pvc
+      #   persistentVolumeClaim:
+      #     claimName: knee-trainer-client-pvc
       imagePullSecrets:
       - name: registry-moglidev-secret
 
