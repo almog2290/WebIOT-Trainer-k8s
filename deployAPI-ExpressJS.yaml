@@ -64,9 +64,9 @@ spec:
             memory: "1Gi"
             cpu: "1000m"
       volumes:
-      - name: api-volume
-        persistentVolumeClaim:
-          claimName: api-pvc
+      # - name: api-volume
+      #   persistentVolumeClaim:
+      #     claimName: api-pvc
       - name: api-database
         persistentVolumeClaim:
           claimName: api-database-pvc
@@ -80,11 +80,11 @@ kind: Service
 metadata:
   name: knee-trainer-api-svc
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: knee-trainer-api-server
     env: dev
   ports:
     - protocol: TCP
-      port: 5000
+      port: 80
       targetPort: 5000

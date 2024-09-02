@@ -33,10 +33,10 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "1000m"
-      volumes:
-      - name: knee-trainer-client-pvc
-        persistentVolumeClaim:
-          claimName: knee-trainer-client-pvc
+      # volumes:
+      # - name: knee-trainer-client-pvc
+      #   persistentVolumeClaim:
+      #     claimName: knee-trainer-client-pvc
       imagePullSecrets:
       - name: registry-moglidev-secret
 
