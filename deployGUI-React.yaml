@@ -37,6 +37,8 @@ spec:
       - name: knee-trainer-client-pvc
         persistentVolumeClaim:
           claimName: knee-trainer-client-pvc
+      imagePullSecrets:
+      - name: registry-moglidev-secret
 
 ---
 apiVersion: v1
