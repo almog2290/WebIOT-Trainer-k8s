@@ -20,11 +20,11 @@ spec:
         image: registry.moglidev.xyz/kneetrainer-api-server:dev1.1
         ports:
         - containerPort: 5000
-        volumeMounts:
-        - mountPath: /usr/src/api
-          name: api-volume
-        - mountPath: /usr/src/api/database
-          name: api-database
+        # volumeMounts:
+        # - mountPath: /usr/src/api
+        #   name: api-volume
+        # - mountPath: /usr/src/api/database
+        #   name: api-database
         env:
         - name: BROKER_URL
           valueFrom:
