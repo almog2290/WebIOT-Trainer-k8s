@@ -25,7 +25,7 @@ spec:
         #   name: knee-trainer-client-pvc
         env:
         - name: REACT_APP_API_URL
-          value: http://knee-trainer-api-svc
+          value: knee-trainer-api-svc
         resources:
           requests:
             memory: "128Mi"
