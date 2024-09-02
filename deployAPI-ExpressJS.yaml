@@ -63,13 +63,13 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "250m"
-        volumes:
-        - name: api-volume
-          persistentVolumeClaim:
-            claimName: api-pvc
-        - name: api-database
-          persistentVolumeClaim:
-            claimName: api-database-pvc
+      volumes:
+      - name: api-volume
+        persistentVolumeClaim:
+          claimName: api-pvc
+      - name: api-database
+        persistentVolumeClaim:
+          claimName: api-database-pvc
       imagePullSecrets:
       - name: registry-moglidev-secret
       

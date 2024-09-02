@@ -33,6 +33,10 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+      volumes:
+      - name: knee-trainer-client-pvc
+        persistentVolumeClaim:
+          claimName: knee-trainer-client-pvc
 
 ---
 apiVersion: v1
