@@ -64,9 +64,9 @@ spec:
             memory: "1Gi"
             cpu: "1000m"
       volumes:
-      # - name: api-volume
-      #   persistentVolumeClaim:
-      #     claimName: api-pvc
+      - name: api-volume
+        persistentVolumeClaim:
+          claimName: api-pvc
       - name: api-database
         persistentVolumeClaim:
           claimName: api-database-pvc
