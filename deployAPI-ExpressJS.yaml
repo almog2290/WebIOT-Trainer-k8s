@@ -81,7 +81,8 @@ metadata:
   name: knee-trainer-api-svc
 spec:
   selector:
-    app: knee-trainer-api-svc
+    app: knee-trainer-api-server
+    env: dev
   ports:
     - protocol: TCP
       port: 80

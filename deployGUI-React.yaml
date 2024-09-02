@@ -42,7 +42,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: knee-trainer-app-svc
+    app: knee-trainer-app-client
+    env: dev
   ports:
     - protocol: TCP
       port: 3000
