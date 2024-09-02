@@ -15,6 +15,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: api-database-pvc
+  namespace: knee-trainer
 spec:
   accessModes:
     - ReadWriteMany
@@ -26,6 +27,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: knee-trainer-client-pvc
+  namespace: knee-trainer
 spec:
   accessModes:
     - ReadWriteMany
