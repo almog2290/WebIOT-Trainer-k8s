@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knee-trainer-api-server
+  namespace: knee-trainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: knee-trainer-api-server
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: knee-trainer-api-server
+        env: dev
+    spec:
+      containers:
+      - name: knee-trainer-api-server
+        image: registry.moglidev.xyz/kneetrainer-api-server:dev1.0
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - mountPath: /usr/src/api
+          name: api-volume
+        - mountPath: /usr/src/api/database
+          name: api-database
+        env:
+        - name: BROKER_URL
+          valueFrom:
+            secretKeyRef:
+              name: knee-trainer-api-secrets
+              key: BROKER_URL
+        - name: CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: knee-trainer-api-secrets
+              key: CLIENT_ID
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: knee-trainer-api-secrets
+              key: PASSWORD
+        - name: KEEPALIVE
+          valueFrom:
+            configMapKeyRef:
+              name: knee-trainer-api-config
+              key: KEEPALIVE
+        - name: TOPIC1
+          valueFrom:
+            configMapKeyRef:
+              name: knee-trainer-api-config
+              key: TOPIC1
+        - name: TOPIC2
+          valueFrom:
+            configMapKeyRef:
+              name: knee-trainer-api-config
+              key: TOPIC2
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        volumes:
+        - name: api-volume
+          persistentVolumeClaim:
+            claimName: api-pvc
+        - name: api-database
+          persistentVolumeClaim:
+            claimName: api-database-pvc
+      imagePullSecrets:
+      - name: registry-moglidev-secret
+      
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: knee-trainer-api-svc
+spec:
+  selector:
+    app: knee-trainer-api-svc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knee-trainer-app-client
+  namespace: knee-trainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: knee-trainer-app-client
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: knee-trainer-app-client
+        env: dev
+    spec:
+      containers:
+      - name: knee-trainer-app-client
+        image: registry.moglidev.xyz/kneetrainer-app-client:dev1.0
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: /usr/src/app
+          name: knee-trainer-client-pvc
+        env:
+        - name: REACT_APP_API_URL
+          value: http://knee-trainer-api-svc
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: knee-trainer-app-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: knee-trainer-app-svc
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
