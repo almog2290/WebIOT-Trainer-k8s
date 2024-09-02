@@ -26,6 +26,10 @@ spec:
         env:
         - name: REACT_APP_API_URL
           value: http://knee-trainer-api-svc
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
       volumes:
       - name: knee-trainer-client-pvc
         persistentVolumeClaim:

@@ -56,6 +56,10 @@ spec:
             configMapKeyRef:
               name: knee-trainer-api-config
               key: TOPIC2
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
       volumes:
       - name: api-volume
         persistentVolumeClaim:
