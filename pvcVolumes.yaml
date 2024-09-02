@@ -6,7 +6,7 @@ metadata:
   namespace: knee-trainer
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
@@ -18,7 +18,7 @@ metadata:
   namespace: knee-trainer
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
@@ -30,7 +30,7 @@ metadata:
   namespace: knee-trainer
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
