@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: knee-trainer-api-server
-        image: registry.moglidev.xyz/kneetrainer-api-server:dev1.0
+        image: registry.moglidev.xyz/kneetrainer-api-server:dev1.1
         ports:
         - containerPort: 5000
         volumeMounts:

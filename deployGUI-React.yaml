@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: knee-trainer-app-client
-        image: registry.moglidev.xyz/kneetrainer-app-client:dev1.0
+        image: registry.moglidev.xyz/kneetrainer-app-client:dev1.1
         ports:
         - containerPort: 3000
         volumeMounts:
