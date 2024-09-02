@@ -20,11 +20,11 @@ spec:
         image: registry.moglidev.xyz/kneetrainer-api-server:dev1.1
         ports:
         - containerPort: 5000
-        # volumeMounts:
+        volumeMounts:
         # - mountPath: /usr/src/api
         #   name: api-volume
-        # - mountPath: /usr/src/api/database
-        #   name: api-database
+        - mountPath: /usr/src/api/database
+          name: api-database
         env:
         - name: BROKER_URL
           valueFrom:
@@ -64,9 +64,9 @@ spec:
             memory: "1Gi"
             cpu: "1000m"
       volumes:
-      - name: api-volume
-        persistentVolumeClaim:
-          claimName: api-pvc
+      # - name: api-volume
+      #   persistentVolumeClaim:
+      #     claimName: api-pvc
       - name: api-database
         persistentVolumeClaim:
           claimName: api-database-pvc
