@@ -1,54 +1,12 @@
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: api-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: "/home/k3s/knee-trainer/data/api"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: api-database-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: "/home/k3s/knee-trainer/data/api-database"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: knee-trainer-client-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: "/home/k3s/knee-trainer/data/knee-trainer-client"
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: api-pvc
   namespace: knee-trainer
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
@@ -59,7 +17,7 @@ metadata:
   name: api-database-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
@@ -70,7 +28,7 @@ metadata:
   name: knee-trainer-client-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
