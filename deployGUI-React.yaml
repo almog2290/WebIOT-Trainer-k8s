@@ -8,12 +8,12 @@ spec:
   selector:
     matchLabels:
       app: knee-trainer-app-client
-      env: dev
+      env: dev1.2
   template:
     metadata:
       labels:
         app: knee-trainer-app-client
-        env: dev
+        env: dev1.2
     spec:
       containers:
       - name: knee-trainer-app-client
@@ -53,7 +53,7 @@ spec:
   type: LoadBalancer
   selector:
     app: knee-trainer-app-client
-    env: dev
+    env: dev1.2
   ports:
     - protocol: TCP
       port: 31637
