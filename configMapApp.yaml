@@ -8,5 +8,5 @@ data:
     :3000 {
         root * /usr/share/caddy
         file_server
-        reverse_proxy /api/* {env.REACT_APP_API_URL}
+        reverse_proxy /api/* knee-trainer-api-svc.knee-trainer.svc.cluster.local
     }

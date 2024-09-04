@@ -27,9 +27,6 @@ spec:
           name: knee-trainer-client-pvc
         - mountPath: /config
           name: knee-trainer-client-pvc
-        env:
-        - name: REACT_APP_API_URL
-          value: knee-trainer-api-svc.knee-trainer.svc.cluster.local
         resources:
           requests:
             memory: "128Mi"
@@ -59,5 +56,5 @@ spec:
     env: dev
   ports:
     - protocol: TCP
-      port: 3000
+      port: 31637
       targetPort: 3000
