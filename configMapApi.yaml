@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: knee-trainer-api-config
+  namespace: knee-trainer
+data:
+  KEEPALIVE: "300"
+  TOPIC1: "braude/teams/team10/sessionReport"
+  TOPIC2: "braude/teams/team10/sessionLive"
