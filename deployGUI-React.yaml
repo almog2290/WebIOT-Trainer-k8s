@@ -17,12 +17,16 @@ spec:
     spec:
       containers:
       - name: knee-trainer-app-client
-        image: registry.moglidev.xyz/kneetrainer-app-client:dev1.1
+        image: registry.moglidev.xyz/kneetrainer-app-client:dev1.2
         ports:
         - containerPort: 3000
-        # volumeMounts:
-        # - mountPath: /usr/src/app
-        #   name: knee-trainer-client-pvc
+        volumeMounts:
+        - mountPath: /etc/caddy
+          name: caddy-config
+        - mountPath: /data
+          name: knee-trainer-client-pvc
+        - mountPath: /config
+          name: knee-trainer-client-pvc
         env:
         - name: REACT_APP_API_URL
           value: knee-trainer-api-svc.knee-trainer.svc.cluster.local
@@ -33,10 +37,13 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "1000m"
-      # volumes:
-      # - name: knee-trainer-client-pvc
-      #   persistentVolumeClaim:
-      #     claimName: knee-trainer-client-pvc
+      volumes:
+      - name: caddy-config
+        configMap:
+          name: caddy-config
+      - name: knee-trainer-client-pvc
+        persistentVolumeClaim:
+          claimName: knee-trainer-client-pvc
       imagePullSecrets:
       - name: registry-moglidev-secret
 
