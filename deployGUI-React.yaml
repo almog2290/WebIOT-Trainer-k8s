@@ -52,5 +52,5 @@ spec:
     env: dev
   ports:
     - protocol: TCP
-      port: 3000
+      port: 80
       targetPort: 3000
